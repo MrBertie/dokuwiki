@@ -343,7 +343,7 @@ class Doku_Indexer {
      *
      * Used by plugins to obtain the PID for referencing metadata
      * If missing it will be created
-     * PID => page ID => line location page index file
+     * PID => page ID => line number in page index file
      *
      * @param string    $page   a page name
      * @return string           the new/current PID
@@ -354,7 +354,7 @@ class Doku_Indexer {
             return "locked";
 
         // load known documents
-        $pid = $this->getIndexKey('page', '', $page);
+        $pid = $this->addIndexKey('page', '', $page);
         if ($pid === false) {
             $this->unlock();
             return false;
